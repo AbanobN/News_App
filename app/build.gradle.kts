@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     id ("kotlin-parcelize")
     id("kotlin-kapt")
-    id ("com.google.dagger.hilt.android")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -80,9 +80,9 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:$navVersion")
 
     // Dagger Hilt
-    implementation("com.google.dagger:hilt-android:2.45")
-    kapt("com.google.dagger:hilt-compiler:2.45")
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation("com.google.dagger:hilt-android:2.51.1") // ✅ Updated Hilt
+    kapt("com.google.dagger:hilt-compiler:2.51.1") // ✅ Updated Hilt
+    implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
 
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")

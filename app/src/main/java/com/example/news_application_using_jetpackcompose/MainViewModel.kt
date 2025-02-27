@@ -3,7 +3,7 @@ package com.example.news_application_using_jetpackcompose
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.news_application_using_jetpackcompose.domain.usecases.AppEntryUseCases
+import com.example.news_application_using_jetpackcompose.domain.usecases.app_entry.AppEntryUseCases
 import com.example.news_application_using_jetpackcompose.persentation.nvgraph.Route
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay

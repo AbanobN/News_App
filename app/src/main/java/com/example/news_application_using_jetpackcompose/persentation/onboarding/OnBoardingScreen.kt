@@ -19,7 +19,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.example.news_application_using_jetpackcompose.persentation.Dimens.MediumPadding2
-import com.example.news_application_using_jetpackcompose.persentation.Dimens.pageIndicatorWidth
+import com.example.news_application_using_jetpackcompose.persentation.Dimens.PageIndicatorWidth
 import com.example.news_application_using_jetpackcompose.persentation.common.NewsButton
 import com.example.news_application_using_jetpackcompose.persentation.common.NewsTextButton
 import com.example.news_application_using_jetpackcompose.persentation.onboarding.components.OnBoardingPage
@@ -63,7 +63,7 @@ fun OnBoardingScreen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             PageIndicator(
-                modifier = Modifier.width(pageIndicatorWidth),
+                modifier = Modifier.width(PageIndicatorWidth),
                 pageSize = pages.size,
                 selectedPage = pagerState.currentPage
             )

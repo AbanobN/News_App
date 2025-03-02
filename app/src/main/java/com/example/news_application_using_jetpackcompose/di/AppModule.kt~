@@ -96,5 +96,5 @@ object AppModule {
         newsDatabase: NewsDatabase
     ) : NewsDao = newsDatabase.newsDao
 
-
+    
 }

@@ -13,9 +13,13 @@ import com.example.news_application_using_jetpackcompose.domain.repository.NewsR
 import com.example.news_application_using_jetpackcompose.domain.usecases.app_entry.AppEntryUseCases
 import com.example.news_application_using_jetpackcompose.domain.usecases.app_entry.ReadAppEntry
 import com.example.news_application_using_jetpackcompose.domain.usecases.app_entry.SaveAppEntry
+import com.example.news_application_using_jetpackcompose.domain.usecases.news.DeleteArticle
 import com.example.news_application_using_jetpackcompose.domain.usecases.news.GetNews
 import com.example.news_application_using_jetpackcompose.domain.usecases.news.NewsUseCases
 import com.example.news_application_using_jetpackcompose.domain.usecases.news.SearchNews
+import com.example.news_application_using_jetpackcompose.domain.usecases.news.SelectArticle
+import com.example.news_application_using_jetpackcompose.domain.usecases.news.SelectArticles
+import com.example.news_application_using_jetpackcompose.domain.usecases.news.UpsertArticle
 import com.example.news_application_using_jetpackcompose.util.Constants.BASE_URL
 import com.example.news_application_using_jetpackcompose.util.Constants.NEWS_DATABASE_NAME
 import dagger.Module
@@ -43,7 +47,7 @@ object AppModule {
         localUserManger: LocalUserManger
     ) = AppEntryUseCases(
         readAppEntry = ReadAppEntry(localUserManger),
-        saveAppEntry = SaveAppEntry(localUserManger)
+        saveAppEntry = SaveAppEntry(localUserManger),
     )
 
     @Provides
@@ -59,8 +63,9 @@ object AppModule {
     @Provides
     @Singleton
     fun provideNewsRepository(
-        newsApi: NewsApi
-    ): NewsRepository = NewsRepositoryImpl(newsApi)
+        newsApi: NewsApi,
+        newsDao: NewsDao
+    ): NewsRepository = NewsRepositoryImpl(newsApi, newsDao)
 
     @Provides
     @Singleton
@@ -69,7 +74,11 @@ object AppModule {
     ): NewsUseCases{
         return NewsUseCases(
             getNews = GetNews(newsRepository),
-            searchNews = SearchNews(newsRepository)
+            searchNews = SearchNews(newsRepository),
+            upsertArticle = UpsertArticle(newsRepository),
+            deleteArticle = DeleteArticle(newsRepository),
+            selectArticles = SelectArticles(newsRepository),
+            selectArticle = SelectArticle(newsRepository)
         )
     }
 
